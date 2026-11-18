@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Escondite</title>
+  <meta name="description" content="Cada día alguien se esconde en el mundo. Seguí las pistas y encontralo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div id="mapa"></div>
+
+  <header class="barra">
+    <div class="marca">Escondite<span class="punto">.</span></div>
+    <div class="dia" id="dia"></div>
+  </header>
+
+  <section class="panel" id="panel" aria-live="polite">
+    <div class="final" id="final" hidden>
+      <div class="final-titulo" id="final-titulo"></div>
+      <div class="final-lugar" id="final-lugar"></div>
+      <div class="final-puntos" id="final-puntos"></div>
+      <div class="final-emojis" id="final-emojis"></div>
+      <div class="final-detalle" id="final-detalle"></div>
+      <button class="boton" id="compartir">Compartir resultado</button>
+      <p class="ayuda" id="copiado" hidden>¡Copiado! Pegalo en el grupo.</p>
+      <p class="ayuda">Mañana hay un escondite nuevo.</p>
+    </div>
+    <div class="rondas" id="rondas"></div>
+    <ol class="pistas" id="pistas"></ol>
+    <div class="feedback" id="feedback" hidden></div>
+    <div class="acciones" id="acciones">
+      <p class="ayuda" id="ayuda">Tocá el globo para marcar dónde creés que estoy.</p>
+      <button class="boton" id="arriesgar" disabled>Arriesgar acá</button>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+  <script src="lugares.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
