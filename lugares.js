@@ -1,218 +1,216 @@
-// Banco curado de escondites. Escalera de 5 pistas por lugar:
-// 1) continente/región + un dato característico (el que sabe lo puede sacar de entrada)
-// 2) el país, por un rasgo inconfundible
-// 3) dónde dentro del país
-// 4) un dato icónico
-// 5) casi el nombre
+// Banco curado de escondites.
+// Pistas en escalera (cada una es un acertijo, nunca un dato directo):
+// 1) región/identidad  2) país  3) dónde dentro del país  4) dato icónico  5) casi el nombre
+// dificultad: 1 fácil · 2 medio · 3 difícil (el calendario la usa con una curva semanal)
 window.LUGARES = [
-  { nombre: "Ushuaia, Argentina", lat: -54.80, lon: -68.30, pistas: [
-    "Estoy en el extremo sur de América del Sur. Me consideran la ciudad más austral del mundo.",
-    "Mi país es el del tango y el mate, y su capital está a más de 2.300 km de mí.",
-    "Estoy en una isla que mi país comparte con Chile, a orillas de un canal.",
-    "Desde mi puerto zarpa la mayoría de los cruceros que van a la Antártida.",
-    "Soy la capital de Tierra del Fuego, miro al Canal Beagle y mi nombre empieza con U."
+  { nombre: "Ushuaia, Argentina", lat: -54.80, lon: -68.30, dificultad: 1, pistas: [
+    "Si caminaras siempre hacia el sur desde acá, el próximo continente que pisarías sería el blanco.",
+    "El escudo de fútbol de mi país lleva tres estrellas, y su bandera tiene un sol con cara.",
+    "Vivo en una isla que dos países se repartieron con una línea recta.",
+    "Mis primeros vecinos fueron presos: la cárcel levantó el pueblo y hasta tuvo un tren para buscar leña.",
+    "Me venden como «el fin del mundo» y miro a un canal con nombre de barco inglés."
   ]},
-  { nombre: "Reikiavik, Islandia", lat: 64.15, lon: -21.94, pistas: [
-    "Estoy en una isla del Atlántico Norte, cerca del círculo polar ártico. Soy la capital más al norte del mundo.",
-    "Mi país está lleno de volcanes, géiseres y glaciares, y tiene menos de 400.000 habitantes.",
-    "Estoy en la costa suroeste de la isla, junto a una bahía.",
-    "En 1972 se jugó acá el «match del siglo» de ajedrez entre Fischer y Spassky.",
+  { nombre: "Reikiavik, Islandia", lat: 64.15, lon: -21.94, dificultad: 2, pistas: [
+    "Mi isla se está partiendo: crece un par de centímetros por año porque dos placas continentales se separan.",
+    "Mi país no tiene ejército, pero sí uno de los parlamentos más antiguos del mundo, fundado en el año 930.",
+    "Soy la capital más al norte de un país soberano, y estoy en el rincón suroeste de mi isla.",
+    "En plena Guerra Fría, un estadounidense y un soviético se enfrentaron acá sobre 64 casillas.",
     "Mi nombre significa «bahía humeante» y empieza con R."
   ]},
-  { nombre: "Tombuctú, Malí", lat: 16.77, lon: -3.01, pistas: [
-    "Estoy en África Occidental, en el borde sur del Sahara. En español se usa mi nombre para decir «el lugar más lejano del mundo».",
-    "Mi país no tiene salida al mar, es uno de los más grandes de África y su capital es Bamako.",
-    "Estoy a unos 15 km del río Níger, justo donde hace su gran curva hacia el norte.",
-    "Mis mezquitas de barro y mis manuscritos medievales son Patrimonio de la Humanidad.",
-    "Mi nombre empieza con «Tomb»."
+  { nombre: "Tombuctú, Malí", lat: 16.77, lon: -3.01, dificultad: 3, pistas: [
+    "Durante siglos, acá la sal valía casi tanto como el oro, y llegaba en caravanas de camellos.",
+    "Según muchos historiadores, el hombre más rico de la historia fue rey de estas tierras en el siglo XIV.",
+    "Estoy a un paso de un río que, en vez de ir al mar, primero se mete en el desierto y después pega la vuelta.",
+    "En 2013, mis vecinos escondieron miles de manuscritos medievales para salvarlos de los yihadistas.",
+    "En español usamos mi nombre para decir «el lugar más lejano del mundo»."
   ]},
-  { nombre: "Ulán Bator, Mongolia", lat: 47.92, lon: 106.92, pistas: [
-    "Estoy en Asia, entre Rusia y China. Soy la capital más fría del mundo.",
-    "Mi país es la tierra de Gengis Kan y uno de los menos densamente poblados del planeta.",
-    "Estoy en el centro-norte del país, a unos 1.350 metros, en el valle del río Tuul.",
-    "Casi la mitad de la población del país vive acá, muchos en tiendas tradicionales llamadas ger.",
-    "Mi nombre significa «héroe rojo» y empieza con «Ulán»."
+  { nombre: "Ulán Bator, Mongolia", lat: 47.92, lon: 106.92, dificultad: 2, pistas: [
+    "Ninguna capital del mundo pasa un invierno tan frío como el mío: en enero, el promedio ronda los −20 °C.",
+    "En estas estepas nació el imperio terrestre continuo más grande de la historia.",
+    "Mi país limita solo con dos gigantes, y yo estoy a menos de 300 km del que tiene al norte.",
+    "Casi la mitad de mi país vive acá, muchos en casas redondas de fieltro que se arman y desarman.",
+    "Mi nombre significa «héroe rojo»."
   ]},
-  { nombre: "Valparaíso, Chile", lat: -33.05, lon: -71.62, pistas: [
-    "Estoy en la costa pacífica de América del Sur. Soy un puerto de cerros de colores que se suben con ascensores centenarios.",
-    "Mi país es largo y angosto, encerrado entre la cordillera de los Andes y el océano.",
-    "Estoy a unos 110 km al noroeste de la capital de mi país.",
-    "Soy sede del Congreso Nacional, y Neruda tuvo acá su casa La Sebastiana.",
-    "Me dicen «Valpo» y comparto bahía con Viña del Mar."
+  { nombre: "Valparaíso, Chile", lat: -33.05, lon: -71.62, dificultad: 2, pistas: [
+    "Antes de que abrieran un atajo en Centroamérica, casi todo barco que pasaba de un océano al otro paraba en mi puerto.",
+    "Mi país tiene el desierto más seco del mundo y una isla llena de gigantes de piedra.",
+    "El Congreso de mi país funciona acá, aunque la capital está a poco más de 100 km, del otro lado de unos cerros.",
+    "Un poeta Nobel que escribía con tinta verde tuvo una casa en uno de mis cerros.",
+    "Me dicen «Valpo» y comparto bahía con la «ciudad jardín»."
   ]},
-  { nombre: "Cusco, Perú", lat: -13.53, lon: -71.97, pistas: [
-    "Estoy en los Andes de América del Sur, a unos 3.400 metros. Fui la capital del Imperio inca.",
-    "Mi país es famoso por el ceviche y tiene costa, Andes y Amazonia.",
-    "Estoy en el sur de la sierra de mi país, a unos 570 km al sureste de la capital.",
-    "Desde acá sale el tren hacia Machu Picchu.",
-    "En quechua mi nombre significa «ombligo del mundo» y empieza con C."
+  { nombre: "Cusco, Perú", lat: -13.53, lon: -71.97, dificultad: 1, pistas: [
+    "Fui el centro de un imperio que no usaba la rueda ni la escritura, pero tenía caminos de miles de kilómetros.",
+    "Mi país tiene una ciudadela entre las nubes que fue elegida maravilla del mundo moderno.",
+    "Estoy a unos 3.400 metros: el que llega en avión suele tomar té de coca para no apunarse.",
+    "En una de mis calles hay una piedra con doce ángulos que encaja perfecto con sus vecinas.",
+    "En quechua mi nombre suele traducirse como «ombligo del mundo»."
   ]},
-  { nombre: "Estambul, Turquía", lat: 41.01, lon: 28.98, pistas: [
-    "Estoy en el sudeste de Europa, justo en el límite con Asia. Fui capital del Imperio bizantino y del Imperio otomano.",
-    "Mi país es famoso por el kebab, los baños turcos y los globos de Capadocia.",
-    "Estoy en el noroeste del país, a ambos lados del estrecho que une el mar Negro con el de Mármara.",
-    "Mi Santa Sofía fue iglesia, mezquita, museo y otra vez mezquita.",
-    "Antes me llamaba Constantinopla y hoy mi nombre empieza con «Estam»."
+  { nombre: "Estambul, Turquía", lat: 41.01, lon: 28.98, dificultad: 1, pistas: [
+    "Si cruzás uno de mis puentes, cambiás de continente sin salir de la ciudad.",
+    "Mi país nació de lo que quedó de un imperio que duró más de 600 años y terminó en 1922.",
+    "Estoy sobre el estrecho por donde tienen que pasar los barcos del mar Negro para llegar al Mediterráneo.",
+    "Fui Bizancio, y después llevé el nombre de un emperador romano.",
+    "Mi nombre actual empieza con «Estam»."
   ]},
-  { nombre: "Zanzíbar, Tanzania", lat: -6.16, lon: 39.19, pistas: [
-    "Estoy en una isla del océano Índico, frente a la costa de África Oriental. Me dicen «la isla de las especias».",
-    "Mi país tiene la montaña más alta de África, el Kilimanjaro.",
-    "Estoy a unos 70 km al norte de Dar es-Salaam, cruzando el mar.",
-    "Freddie Mercury nació acá, en el casco antiguo llamado Stone Town.",
-    "Mi nombre empieza con Z."
+  { nombre: "Zanzíbar, Tanzania", lat: -6.16, lon: 39.19, dificultad: 3, pistas: [
+    "Acá se peleó la guerra más corta de la historia: terminó en menos de 45 minutos.",
+    "Mi país nació en 1964 juntando dos nombres en uno.",
+    "Estoy en una isla del Índico, a unos 35 km de la costa y a seis grados al sur del ecuador.",
+    "Una de las voces más famosas del rock nació acá con el nombre de Farrokh Bulsara.",
+    "Me dicen «la isla de las especias» y mi nombre empieza con Z."
   ]},
-  { nombre: "Kioto, Japón", lat: 35.01, lon: 135.77, pistas: [
-    "Estoy en el este de Asia. Fui la capital imperial de mi país durante más de mil años.",
-    "Mi país es un archipiélago famoso por el sushi, los trenes bala y el monte Fuji.",
-    "Estoy en el centro de la isla principal, a unos 45 km de Osaka.",
-    "Un protocolo climático firmado acá en 1997 lleva mi nombre.",
-    "Si cambiás el orden de mis sílabas, obtenés el nombre de la capital actual."
+  { nombre: "Kioto, Japón", lat: 35.01, lon: 135.77, dificultad: 2, pistas: [
+    "Estaba en la lista para recibir una bomba atómica, pero un ministro estadounidense que me conocía me tachó.",
+    "Mi país todavía tiene emperador, y su bandera es solo un círculo rojo sobre blanco.",
+    "Estoy tierra adentro, en el centro de la isla más grande de mi país, a menos de 50 km de un gran puerto.",
+    "En 1997 se firmó acá un acuerdo para frenar el calentamiento global.",
+    "Si desordenás mis sílabas, obtenés el nombre de la capital actual."
   ]},
-  { nombre: "Nueva Orleans, EE. UU.", lat: 29.95, lon: -90.07, pistas: [
-    "Estoy en América del Norte, cerca del golfo de México. Me consideran la cuna del jazz.",
-    "Mi país tiene 50 estados; el mío fue colonia francesa y lleva el nombre de un rey de Francia.",
-    "Estoy cerca de la desembocadura del río Misisipi, entre el río y un gran lago.",
-    "Cada año, antes de Cuaresma, celebro el Mardi Gras.",
-    "Mi nombre incluye «Orleans», como una ciudad de Francia."
+  { nombre: "Nueva Orleans, EE. UU.", lat: 29.95, lon: -90.07, dificultad: 2, pistas: [
+    "Un río que nace a más de 3.700 km de acá termina su viaje cerca mío, en un golfo cálido.",
+    "Mi tierra se vendió por unos 15 millones de dólares a un francés que necesitaba plata para sus guerras.",
+    "Vivo más abajo que el agua que me rodea: un lago al norte, un río al sur y diques para no ahogarme.",
+    "En 2005, una tormenta con nombre de mujer me dejó casi toda bajo el agua.",
+    "Me dicen «The Big Easy», y mi nombre es el de una ciudad francesa… pero más joven."
   ]},
-  { nombre: "Alice Springs, Australia", lat: -23.70, lon: 133.88, pistas: [
-    "Estoy en Oceanía, casi en el centro de un país-continente, en pleno desierto rojo del «Outback».",
-    "Mi país es famoso por los canguros, los koalas y la Ópera de Sídney.",
-    "Estoy en el sur del Territorio del Norte, a más de 1.000 km del mar más cercano.",
-    "A unos 450 km por ruta está Uluru, la gran roca roja sagrada.",
-    "En mi país me dicen simplemente «Alice»."
+  { nombre: "Alice Springs, Australia", lat: -23.70, lon: 133.88, dificultad: 3, pistas: [
+    "Estoy en el hemisferio sur, tan metida en el desierto que el mar más cercano queda a más de 1.000 km.",
+    "Mi país es el único que ocupa un continente entero.",
+    "Mi río casi nunca tiene agua: una vez al año se corre una regata con botes sin fondo, a pie.",
+    "La gran roca roja sagrada de mi país está a unas cinco horas de auto.",
+    "Llevo nombre de mujer y de manantial."
   ]},
-  { nombre: "Marrakech, Marruecos", lat: 31.63, lon: -7.99, pistas: [
-    "Estoy en el norte de África. Me apodan «la ciudad roja» por el color de mis murallas.",
-    "Mi país mira al Atlántico y al Mediterráneo, y lo separa de Europa un estrecho de 14 km.",
-    "Estoy tierra adentro, al pie de la cordillera del Atlas, a unos 150 km de la costa atlántica.",
-    "Mi plaza Jemaa el-Fna se llena cada noche de narradores y encantadores de serpientes.",
+  { nombre: "Marrakech, Marruecos", lat: 31.63, lon: -7.99, dificultad: 2, pistas: [
+    "Mi gran plaza es Patrimonio Oral de la Humanidad por sus narradores y encantadores de serpientes.",
+    "Desde la punta norte de mi país, en un día claro, se ve Europa.",
+    "Estoy tierra adentro, a la sombra de la cordillera más alta del norte de África.",
+    "Un diseñador francés amaba tanto mi jardín azul que sus cenizas descansan ahí.",
     "Mi nombre dio origen al nombre de mi país en varios idiomas."
   ]},
-  { nombre: "San Petersburgo, Rusia", lat: 59.94, lon: 30.31, pistas: [
-    "Estoy en el norte de Europa, sobre el mar Báltico. Fui capital de un imperio durante dos siglos y en junio casi no oscurece.",
-    "Mi país es el más extenso del mundo.",
-    "Estoy en la desembocadura del río Nevá, a unos 630 km al noroeste de la capital actual.",
-    "Mi museo, el Hermitage, ocupa el antiguo Palacio de Invierno de los zares.",
-    "Me fundó Pedro el Grande y llevo el nombre de un santo."
+  { nombre: "San Petersburgo, Rusia", lat: 59.94, lon: 30.31, dificultad: 2, pistas: [
+    "Un zar me mandó construir sobre un pantano para tener su «ventana a Europa».",
+    "Mi país tiene 11 husos horarios.",
+    "Estoy al fondo de un golfo del Báltico, donde desemboca un río corto pero caudaloso.",
+    "En el siglo XX me cambiaron el nombre tres veces, una de ellas en honor a un revolucionario.",
+    "Mi museo más famoso ocupa el antiguo Palacio de Invierno de los zares."
   ]},
-  { nombre: "Manaos, Brasil", lat: -3.12, lon: -60.02, pistas: [
-    "Estoy en América del Sur, en el corazón de la selva amazónica. Tengo un teatro de ópera en plena selva.",
-    "Mi país es el más grande de América del Sur y habla portugués.",
-    "Estoy donde el río Negro se junta con el Solimões para formar el Amazonas.",
-    "Me hice rica con el caucho a fines del siglo XIX y fui sede del Mundial 2014.",
+  { nombre: "Manaos, Brasil", lat: -3.12, lon: -60.02, dificultad: 2, pistas: [
+    "Cerca de acá, un río negro y otro color café con leche corren juntos kilómetros sin mezclarse.",
+    "Mi país es el único de América donde el idioma oficial es el portugués.",
+    "Estoy en el medio de la selva más grande del mundo, a más de 1.000 km del océano siguiendo el río.",
+    "Con la fiebre del caucho me hice un teatro de ópera con materiales traídos de Europa.",
     "Soy la capital del estado de Amazonas y mi nombre empieza con «Man»."
   ]},
-  { nombre: "Ciudad del Cabo, Sudáfrica", lat: -33.92, lon: 18.42, pistas: [
-    "Estoy en el extremo sur de África. Detrás mío hay una montaña de cima chata llamada «la Mesa».",
-    "Mi país tiene tres capitales y lo presidió Nelson Mandela.",
-    "Estoy en la costa suroeste del país, muy cerca del Cabo de Buena Esperanza.",
-    "Frente a mi costa está Robben Island, donde Mandela estuvo preso 18 años.",
+  { nombre: "Ciudad del Cabo, Sudáfrica", lat: -33.92, lon: 18.42, dificultad: 1, pistas: [
+    "Mi montaña es tan chata que a veces las nubes le ponen un mantel encima.",
+    "Mi país tiene tres capitales: una para cada poder del Estado.",
+    "Estoy cerca del cabo que los navegantes portugueses rebautizaron: de «Tormentas» pasó a «Buena Esperanza».",
+    "Frente a mi costa, en una isla, el preso 46664 pasó 18 años.",
     "En inglés me llamo Cape Town."
   ]},
-  { nombre: "Hanói, Vietnam", lat: 21.03, lon: 105.85, pistas: [
-    "Estoy en el sudeste asiático. Soy una capital que cumplió mil años en 2010.",
-    "Mi país es largo y angosto, con forma de S, y es famoso por el pho.",
-    "Estoy en el norte del país, en el delta del río Rojo, a unos 100 km del mar.",
-    "En mi centro está embalsamado Ho Chi Minh.",
-    "Mi nombre empieza con H y significa «dentro del río»."
+  { nombre: "Hanói, Vietnam", lat: 21.03, lon: 105.85, dificultad: 2, pistas: [
+    "Cumplí mil años como capital en 2010; mi nombre antiguo significaba «dragón ascendente».",
+    "Mi país tiene forma de S y en el siglo XX derrotó a Francia y a Estados Unidos.",
+    "Estoy en el norte del país, en el delta de un río con nombre de color.",
+    "Mi líder revolucionario está embalsamado en un mausoleo de mi centro, aunque había pedido que lo cremaran.",
+    "Mi nombre significa «dentro del río» y empieza con H."
   ]},
-  { nombre: "Venecia, Italia", lat: 45.44, lon: 12.33, pistas: [
-    "Estoy en el sur de Europa. Estoy construida sobre más de cien islas y en mis calles no hay autos.",
-    "Mi país tiene forma de bota.",
-    "Estoy en el noreste del país, en una laguna del mar Adriático.",
-    "Mi transporte típico es la góndola y mi plaza principal es la de San Marcos.",
-    "Mi nombre empieza con V y mi carnaval de máscaras es famoso en todo el mundo."
+  { nombre: "Venecia, Italia", lat: 45.44, lon: 12.33, dificultad: 1, pistas: [
+    "Mis calles se inundan con la marea, y por ellas no circula ni un auto.",
+    "Mi país tiene otro país entero metido adentro de su capital.",
+    "Estoy en una laguna al fondo del mar Adriático, en el noreste de mi país.",
+    "Un comerciante de acá viajó hasta la corte de Kublai Kan y lo contó en un libro.",
+    "Me recorren en góndola y mi nombre empieza con V."
   ]},
-  { nombre: "Ciudad de México, México", lat: 19.43, lon: -99.13, pistas: [
-    "Estoy en América del Norte, a más de 2.200 metros. Me construyeron sobre el lago donde los aztecas fundaron su capital.",
-    "Mi país es famoso por los tacos, el tequila y el Día de Muertos.",
-    "Estoy en el centro-sur del país, en un valle rodeado de volcanes como el Popocatépetl.",
-    "Fui sede de los Juegos Olímpicos de 1968 y tengo una plaza enorme llamada el Zócalo.",
+  { nombre: "Ciudad de México, México", lat: 19.43, lon: -99.13, dificultad: 1, pistas: [
+    "Me construyeron sobre un lago, y por eso me hundo varios centímetros por año.",
+    "La bandera de mi país muestra un águila devorando una serpiente.",
+    "Estoy a más de 2.200 metros, en un valle vigilado por un volcán cuyo nombre significa «montaña que humea».",
+    "Fui la primera ciudad de América Latina en organizar unos Juegos Olímpicos, en 1968.",
     "Me llamo igual que mi país."
   ]},
-  { nombre: "Honolulu, EE. UU.", lat: 21.31, lon: -157.86, pistas: [
-    "Estoy en medio del océano Pacífico, en un archipiélago volcánico. Mi playa más famosa es Waikiki.",
-    "Pertenezco al país de las barras y las estrellas: soy la capital de su estado número 50.",
-    "Estoy en la costa sur de la isla de Oahu, a unos 3.900 km de California.",
-    "Muy cerca está Pearl Harbor, atacado por sorpresa en 1941.",
-    "Mi nombre empieza con «Hono»."
+  { nombre: "Honolulu, EE. UU.", lat: 21.31, lon: -157.86, dificultad: 2, pistas: [
+    "Estoy en uno de los archipiélagos más aislados del mundo: el continente más cercano queda a casi 4.000 km.",
+    "Mis islas fueron un reino con su propia reina hasta 1893; hoy son la última estrella de una bandera.",
+    "Estoy en la costa sur de la tercera isla más grande del archipiélago.",
+    "El 7 de diciembre de 1941, a pocos kilómetros de acá, mi país entró en una guerra mundial.",
+    "Mi nombre empieza con «Hono» y mi playa más famosa es Waikiki."
   ]},
-  { nombre: "Dubái, Emiratos Árabes Unidos", lat: 25.20, lon: 55.27, pistas: [
-    "Estoy en Medio Oriente, sobre el golfo Pérsico. Tengo el edificio más alto del mundo.",
-    "Mi país es una federación de siete emiratos.",
-    "Estoy en la costa, a unos 130 km al noreste de la capital, Abu Dabi.",
-    "Construí islas artificiales con forma de palmera.",
-    "Soy el emirato más poblado de mi país y mi nombre empieza con D."
+  { nombre: "Dubái, Emiratos Árabes Unidos", lat: 25.20, lon: 55.27, dificultad: 1, pistas: [
+    "Tengo un rascacielos tan alto que podés ver el atardecer abajo, subir en ascensor y verlo otra vez.",
+    "Mi país es una federación de siete emiratos que se unieron en 1971.",
+    "Estoy sobre el golfo, a algo más de 100 km de la capital de mi país.",
+    "Construí islas artificiales con forma de palmera y de mapa del mundo.",
+    "Mi nombre empieza con D."
   ]},
-  { nombre: "Bergen, Noruega", lat: 60.39, lon: 5.32, pistas: [
-    "Estoy en el norte de Europa, entre fiordos. Mi muelle de casas de madera de colores viene de la época de la Liga Hanseática.",
-    "Mi país es famoso por los fiordos, el salmón y las auroras boreales, y se hizo rico con el petróleo.",
-    "Estoy en la costa oeste del país, a unos 300 km al oeste de la capital.",
-    "Me rodean siete montañas y tengo fama de ser de las ciudades más lluviosas de Europa.",
+  { nombre: "Bergen, Noruega", lat: 60.39, lon: 5.32, dificultad: 3, pistas: [
+    "Fui puerto de una liga de comerciantes alemanes de la Edad Media, que me dejaron un muelle de casas de madera.",
+    "Mi país votó dos veces que no a la Unión Europea, y vive en buena parte del petróleo.",
+    "Estoy en la costa oeste de mi país, rodeada de siete montañas y de fiordos.",
+    "El compositor de «En la gruta del rey de la montaña» nació acá.",
     "Mi muelle se llama Bryggen y mi nombre empieza con B."
   ]},
-  { nombre: "Isla de Pascua, Chile", lat: -27.15, lon: -109.43, pistas: [
-    "Estoy en una isla perdida en el Pacífico Sur, a más de 2.000 km del vecino habitado más cercano. Mis habitantes originarios hablan rapanui.",
-    "Pertenezco a un país sudamericano largo y angosto que está a unos 3.500 km de acá.",
-    "Mi único pueblo, Hanga Roa, está en la costa oeste de la isla.",
-    "Mis gigantescas estatuas de piedra se llaman moáis.",
+  { nombre: "Isla de Pascua, Chile", lat: -27.15, lon: -109.43, dificultad: 3, pistas: [
+    "Mi vecino habitado más cercano está a más de 2.000 km, y es una isla de unas 50 personas.",
+    "Pertenezco a un país sudamericano largo y angosto, que queda a unos 3.500 km de acá.",
+    "Mi único pueblo está en la punta suroeste de una isla triangular con un volcán en cada esquina.",
+    "Mis estatuas gigantes miran hacia adentro de la isla, no hacia el mar.",
     "Los europeos llegaron un domingo de resurrección, y de ahí viene mi nombre."
   ]},
-  { nombre: "Samarcanda, Uzbekistán", lat: 39.65, lon: 66.96, pistas: [
-    "Estoy en Asia Central, sobre la antigua Ruta de la Seda. Mi plaza Registán está rodeada por tres madrazas de azulejos.",
-    "Mi país es uno de los dos del mundo doblemente sin litoral, y su nombre termina en «-istán».",
-    "Estoy a unos 270 km al suroeste de la capital de mi país, Taskent.",
-    "Tamerlán me hizo capital de su imperio en el siglo XIV y está enterrado acá.",
-    "Mi nombre empieza con «Sama»."
+  { nombre: "Samarcanda, Uzbekistán", lat: 39.65, lon: 66.96, dificultad: 3, pistas: [
+    "Fui la joya de la Ruta de la Seda; según la leyenda, acá unos prisioneros chinos enseñaron a fabricar papel.",
+    "Mi país está rodeado solo de países sin salida al mar, y su nombre termina en «-istán».",
+    "Estoy a unos 270 km al suroeste de la capital de mi país.",
+    "Un conquistador rengo del siglo XIV me hizo capital de su imperio y está enterrado acá.",
+    "Mi plaza Registán tiene tres madrazas, y mi nombre empieza con «Sama»."
   ]},
-  { nombre: "Quito, Ecuador", lat: -0.18, lon: -78.47, pistas: [
-    "Estoy en América del Sur, casi exactamente sobre la línea del ecuador, a unos 2.850 metros.",
-    "Mi país lleva el nombre de esa línea y también le pertenecen las islas Galápagos.",
-    "Estoy en un valle de los Andes, al pie del volcán Pichincha, en el norte del país.",
-    "Cerca tengo un monumento llamado «La Mitad del Mundo».",
+  { nombre: "Quito, Ecuador", lat: -0.18, lon: -78.47, dificultad: 2, pistas: [
+    "Estoy a solo 25 km de la línea que parte el mundo en dos, y a casi 3.000 metros de altura.",
+    "Mi país usa el dólar estadounidense y es dueño de unas islas que inspiraron a Darwin.",
+    "Estoy en un valle alargado al pie de un volcán activo, en el norte de mi país.",
+    "En 1978 fui, junto con Cracovia, la primera ciudad declarada Patrimonio de la Humanidad.",
     "Soy la capital de mi país y mi nombre empieza con Q."
   ]},
-  { nombre: "Katmandú, Nepal", lat: 27.72, lon: 85.32, pistas: [
-    "Estoy en el sur de Asia, en un valle del Himalaya. Muchos montañistas pasan por acá antes de ir al Everest.",
-    "Mi país tiene la única bandera nacional que no es rectangular.",
-    "Estoy en el centro del país, a unos 160 km al oeste-suroeste del Everest.",
-    "Tengo una «diosa viviente»: una niña llamada Kumari.",
+  { nombre: "Katmandú, Nepal", lat: 27.72, lon: 85.32, dificultad: 2, pistas: [
+    "Desde acá salen los vuelos hacia uno de los aeropuertos más peligrosos del mundo, la puerta al techo del planeta.",
+    "La bandera de mi país es la única que no es rectangular.",
+    "Estoy en un valle a unos 1.400 metros, a unos 160 km de la montaña más alta del mundo.",
+    "Tengo una «diosa viviente»: una niña elegida que no puede tocar el suelo fuera de su palacio.",
     "Soy la capital y mi nombre empieza con K."
   ]},
-  { nombre: "La Habana, Cuba", lat: 23.11, lon: -82.37, pistas: [
-    "Estoy en una isla del Caribe. Por mis calles todavía circulan autos estadounidenses de los años 50.",
-    "Mi país es la isla más grande del Caribe, famosa por sus puros y su salsa.",
-    "Estoy en la costa norte de la isla, a unos 170 km de Cayo Hueso, en la Florida.",
-    "Mi malecón recorre unos 8 km frente al mar, y Hemingway tomaba daiquiris en El Floridita.",
+  { nombre: "La Habana, Cuba", lat: 23.11, lon: -82.37, dificultad: 1, pistas: [
+    "Por mis calles todavía andan autos de los años 50, porque durante décadas casi no entraron nuevos.",
+    "En 1962, por unos misiles instalados en mi país, el mundo estuvo al borde de una guerra nuclear.",
+    "Estoy en la costa norte de una isla, a menos de 200 km de Estados Unidos.",
+    "Un escritor estadounidense ganador del Nobel vivió cerca y tomaba daiquiris en mi bar El Floridita.",
     "Soy la capital y mi nombre empieza con «La Ha»."
   ]},
-  { nombre: "Longyearbyen, Svalbard (Noruega)", lat: 78.22, lon: 15.65, pistas: [
-    "Estoy en el Ártico, en un archipiélago donde hay más osos polares que personas. Soy uno de los pueblos más al norte del planeta.",
-    "Mi archipiélago pertenece a un país escandinavo famoso por sus fiordos.",
-    "Estoy a unos 800 km al norte del extremo de Europa continental: más cerca del Polo Norte que de la capital de mi país.",
-    "Cerca mío hay una bóveda que guarda semillas de todo el mundo por si llega una catástrofe.",
+  { nombre: "Longyearbyen, Svalbard (Noruega)", lat: 78.22, lon: 15.65, dificultad: 3, pistas: [
+    "Acá no se entierra a nadie: el suelo congelado no deja que los cuerpos se descompongan.",
+    "Mi archipiélago es de un país escandinavo, pero por un tratado de 1920 cualquiera puede venir a vivir sin visa.",
+    "Estoy a unos 1.300 km del Polo Norte: más cerca de él que de la capital de mi país.",
+    "Dentro de una montaña cercana hay una bóveda que guarda semillas de todo el mundo.",
     "Mi archipiélago se llama Svalbard."
   ]},
-  { nombre: "Adís Abeba, Etiopía", lat: 9.03, lon: 38.74, pistas: [
-    "Estoy en el Cuerno de África, a unos 2.350 metros. Soy la sede de la Unión Africana.",
-    "Mi país es la cuna del café y nunca fue colonizado, salvo una ocupación italiana de cinco años.",
-    "Estoy en el centro del país, en una meseta, a más de 500 km de la costa más cercana.",
-    "En mi museo nacional está «Lucy», un esqueleto de homínido de 3,2 millones de años.",
-    "Soy la capital y mi nombre significa «flor nueva»."
+  { nombre: "Adís Abeba, Etiopía", lat: 9.03, lon: 38.74, dificultad: 3, pistas: [
+    "En mi museo duerme «Lucy», que durante años fue el ancestro humano más famoso.",
+    "Mi país es la cuna del café y tiene su propio calendario, de 13 meses.",
+    "Estoy en el centro de mi país, sobre una meseta a 2.350 metros: una de las capitales más altas del mundo.",
+    "Soy la sede de la Unión Africana.",
+    "Mi nombre significa «flor nueva»."
   ]},
-  { nombre: "San Carlos de Bariloche, Argentina", lat: -41.13, lon: -71.31, pistas: [
-    "Estoy en la Patagonia, en América del Sur. Me conocen por el chocolate y por los viajes de egresados.",
-    "Mi país es el de Messi, el mate y el asado.",
-    "Estoy al pie de la cordillera de los Andes, a orillas de un gran lago, cerca de la frontera con Chile.",
-    "Mi cerro más famoso para esquiar es el Catedral, y miro al lago Nahuel Huapi.",
+  { nombre: "San Carlos de Bariloche, Argentina", lat: -41.13, lon: -71.31, dificultad: 1, pistas: [
+    "En el hemisferio sur, entre lagos y bosques, soy famosa por el chocolate y los perros San Bernardo para la foto.",
+    "Mi país ganó tres Mundiales de fútbol.",
+    "Estoy al pie de la cordillera, a orillas de un lago enorme, a unos 50 km de Chile.",
+    "Miles de estudiantes vienen cada año a festejar acá el fin de la secundaria.",
     "Mi nombre completo empieza con «San Carlos de»."
   ]},
-  { nombre: "Seattle, EE. UU.", lat: 47.61, lon: -122.33, pistas: [
-    "Estoy en América del Norte, sobre el Pacífico. Acá abrió el primer Starbucks y nació el grunge.",
-    "Mi país tiene 50 estados; el mío lleva el nombre de su primer presidente.",
-    "Estoy en el noroeste del país, a unos 170 km al sur de la frontera con Canadá.",
-    "Mi torre Space Needle se hizo para la Exposición de 1962, y a la vista tengo el volcán Rainier.",
+  { nombre: "Seattle, EE. UU.", lat: 47.61, lon: -122.33, dificultad: 2, pistas: [
+    "Acá nacieron el grunge y una cadena de café con una sirena en el logo.",
+    "Mi país tiene 50 estados, y el mío lleva el nombre de su primer presidente.",
+    "Estoy junto a un brazo de mar del Pacífico, a menos de 200 km de Canadá.",
+    "Mi torre con forma de platillo volador se construyó para una exposición universal en 1962.",
     "Soy la ciudad más grande del estado de Washington y mi nombre empieza con S."
   ]}
 ];

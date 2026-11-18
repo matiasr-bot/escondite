@@ -17,14 +17,47 @@
       return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
     };
   }
-  function ordenDeLugares(n) {
-    const rnd = mulberry32(20261118);
-    const idx = [...Array(n).keys()];
-    for (let i = n - 1; i > 0; i--) {
+  function mezclar(lista, semilla) {
+    const rnd = mulberry32(semilla);
+    const idx = [...lista];
+    for (let i = idx.length - 1; i > 0; i--) {
       const j = Math.floor(rnd() * (i + 1));
       [idx[i], idx[j]] = [idx[j], idx[i]];
     }
     return idx;
+  }
+  const fechaDelDia = (n) => { const f = new Date(INICIO); f.setDate(f.getDate() + n - 1); return f; };
+
+  // Curva semanal: lunes y martes fácil, miércoles a viernes medio, sábado y domingo difícil.
+  const DIFICULTAD_POR_DIA_SEMANA = [3, 1, 1, 2, 2, 2, 3]; // índice = getDay() (0 = domingo)
+  const NOMBRE_DIFICULTAD = { 1: "Fácil", 2: "Medio", 3: "Difícil" };
+  // Días fijados a mano (el #1 se jugó antes de que existiera la curva).
+  const FIJOS = { 1: "Nueva Orleans, EE. UU." };
+
+  // Recorre los días desde el #1: cada día toma el próximo lugar de su dificultad, sin repetir hasta agotar el grupo.
+  function lugarDelDia(numero) {
+    const grupos = { 1: [], 2: [], 3: [] };
+    LUGARES.forEach((l, i) => grupos[l.dificultad].push(i));
+    const fijos = Object.fromEntries(Object.entries(FIJOS).map(([d, nombre]) => [d, LUGARES.findIndex((l) => l.nombre === nombre)]));
+    const yaFijados = new Set(Object.values(fijos));
+    const colas = { 1: [], 2: [], 3: [] }, vueltas = { 1: 0, 2: 0, 3: 0 };
+    const recientes = []; // últimos lugares jugados, para no repetirlos al empezar una vuelta nueva
+    let elegido = 0;
+    for (let d = 1; d <= numero; d++) {
+      if (fijos[d] >= 0) elegido = fijos[d];
+      else {
+        const k = DIFICULTAD_POR_DIA_SEMANA[fechaDelDia(d).getDay()];
+        if (!colas[k].length) {
+          const disponibles = vueltas[k] === 0 ? grupos[k].filter((i) => !yaFijados.has(i)) : grupos[k];
+          const nueva = mezclar(disponibles, 20261118 + 1000 * k + vueltas[k]++);
+          const ultimos = new Set(recientes.slice(-14));
+          colas[k] = [...nueva.filter((i) => !ultimos.has(i)), ...nueva.filter((i) => ultimos.has(i))];
+        }
+        elegido = colas[k].shift();
+      }
+      recientes.push(elegido);
+    }
+    return LUGARES[elegido];
   }
   function numeroDeHoy() {
     const forzado = parseInt(new URLSearchParams(location.search).get("dia"), 10);
@@ -33,8 +66,7 @@
     return Math.max(0, Math.round((hoy - INICIO) / 864e5)) + 1;
   }
   const numero = numeroDeHoy();
-  const orden = ordenDeLugares(LUGARES.length);
-  const lugar = LUGARES[orden[(numero - 1) % LUGARES.length]];
+  const lugar = lugarDelDia(numero);
 
   // ---------- Geografía ----------
   const rad = (g) => (g * Math.PI) / 180;
@@ -90,8 +122,10 @@
 
   // ---------- DOM ----------
   const $ = (id) => document.getElementById(id);
-  const fecha = new Date(INICIO); fecha.setDate(fecha.getDate() + numero - 1);
-  $("dia").textContent = `#${numero} · ${fecha.toLocaleDateString("es-AR", { day: "numeric", month: "short" })}`;
+  const fecha = fechaDelDia(numero);
+  const puntitos = "●".repeat(lugar.dificultad) + "○".repeat(3 - lugar.dificultad);
+  $("dia").innerHTML = `#${numero} · ${fecha.toLocaleDateString("es-AR", { day: "numeric", month: "short" })}
+    · <span class="nivel n${lugar.dificultad}">${puntitos} ${NOMBRE_DIFICULTAD[lugar.dificultad]}</span>`;
 
   // ---------- Mapa ----------
   const map = new maplibregl.Map({
@@ -191,8 +225,8 @@
     } else {
       $("final-titulo").textContent = estado.encontrado ? `¡Me encontraste en la ronda ${n}!` : "No me encontraste, pero sumaste";
       $("final-lugar").textContent = estado.encontrado
-        ? `Estaba en ${lugar.nombre}.`
-        : `Estaba en ${lugar.nombre}. Tu intento más cercano quedó a ${km(Math.min(...estado.intentos.map((x) => x.dist)))} km.`;
+        ? `Estaba en ${lugar.nombre.replace(/\.$/, "")}.`
+        : `Estaba en ${lugar.nombre.replace(/\.$/, "")}. Tu intento más cercano quedó a ${km(Math.min(...estado.intentos.map((x) => x.dist)))} km.`;
       $("final-puntos").textContent = `${mejorPuntaje()} pts`;
       $("final-detalle").innerHTML = estado.intentos.map((x, i) =>
         `<span>R${i + 1}: ${km(x.dist)} km ${factorTexto(i)} = <b>${puntosIntento(x, i)}</b></span>`).join("");
